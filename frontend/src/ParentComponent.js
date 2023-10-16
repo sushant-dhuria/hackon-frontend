@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Chat from './Chat';
 import Results from './Results';
 import './App.css';
-import './Pages/Home.css';
+import './ParentComponent.css';
 
 function ParentComponent() {
   const [chatHistory, setChatHistory] = useState([]);

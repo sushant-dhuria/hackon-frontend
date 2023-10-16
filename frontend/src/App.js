@@ -2,11 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import About from './Pages/About';
 import './App.css';
-import Chat from './components/Chat/Chat';
-import { Results } from './components/Results/Results';
-import Home from './Pages/Home';
+import ParentComponent from './ParentComponent';
 
 function App() {
   return (
@@ -15,10 +12,8 @@ function App() {
         <Navbar />
         <div className="content">
           <Routes>
-            <Route path="/about" element={<Results/>}></Route>
-            <Route path="/services">Services Page</Route>
-            <Route path="/contact">Contact Page</Route>
-            <Route path="/" element={<Home/>}></Route>
+       
+            <Route path="/" element={<ParentComponent/>}></Route>
           </Routes>
         </div>
       </div>

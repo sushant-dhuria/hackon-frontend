@@ -1,0 +1,13 @@
+.parent-container{
+    display: flex !important;
+    flex-direction: row;
+width: 100%;
+}
+
+.chat{
+    width: 25%;
+}
+.results{
+    width: 75%;
+    background-color: rgb(212, 209, 209);
+}

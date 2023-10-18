@@ -17,15 +17,16 @@ const Chat = ({ onChatSubmit }) => {
     setNewMessage('');
 
     // Call the API for a response
-    callAPI(newMessage);
+    callAPI(updatedMessages, newMessage);
   };
-  const callAPI = (userMessage) => {
-    fetch('http://localhost:5000/check-product/', {
+
+  const callAPI = (chatHistory, userMessage) => {
+    fetch('http://localhost:5000/check-product', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userMessage: userMessage }),
+      body: JSON.stringify({ chatHistory }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -33,8 +34,7 @@ const Chat = ({ onChatSubmit }) => {
   
         // Update the chat with both the AI reply and user message
         const updatedMessages = [
-          ...messages,
-          { text: userMessage, type: 'user' },
+          ...chatHistory,
           { text: aiReply, type: 'ai' },
         ];
   
@@ -47,7 +47,6 @@ const Chat = ({ onChatSubmit }) => {
         console.error('Error:', error);
       });
   };
-  
 
   return (
     <div className="chat-container">

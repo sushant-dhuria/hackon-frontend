@@ -6,6 +6,89 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+const playlist=[
+  {
+    "id":"1",
+    "name":"comedy",
+    "movies":[1,2,3]
+  },
+  {
+    "id":"2",
+    "name":"action",
+    "movies":[4,5,6]
+  },
+  {
+    "id":"3",
+    "name":"horror",
+    "movies":[7,8]
+  }
+]
+
+const movies=[
+  {
+    "id": "1",
+    "title": "The Matrix",
+    "description": "A computer hacker learns the truth about reality when he joins a group of rebels fighting against machines that have enslaved humanity.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [2, 3, 5,6]
+  },
+  {
+    "id": "2",
+    "title": "Inception",
+    "description": "A thief enters the subconscious of his targets to steal their secrets in this mind-bending heist movie.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [1, 3, 4,5]
+  },
+  {
+    "id": "3",
+    "title": "The Shawshank Redemption",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [2, 5, 6,9]
+  },
+  {
+    "id": "4",
+    "title": "Pulp Fiction",
+    "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [1, 2, 5,8]
+  },
+  {
+    "id": "5",
+    "title": "Interstellar",
+    "description": "A group of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [3, 4, 7,8]
+  },
+  {
+    "id": "6",
+    "title": "Forrest Gump",
+    "description": "The life story of a man with a low IQ who accomplished great things in his lifetime.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [3, 5, 8,1]
+  },
+  {
+    "id": "7",
+    "title": "Gladiator",
+    "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [4, 5, 6,2]
+  },
+  {
+    "id": "8",
+    "title": "The Dark Knight",
+    "description": "When the menace known as The Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "recommendations": [6, 7, 4,3]
+  }
+]
+
+
+// Create a route to retrieve playlists and their movies
+app.get('/playlists', (req, res) => {
+  return res.json(playlist);
+});
+
 app.post('/check-product', (req, res) => {
   const chatHistory = req.body.chatHistory; // Assuming the message is sent in the request body
 
@@ -83,6 +166,16 @@ function generateRandomResults() {
   return results;
 }
 
+app.get('/movies/:id', (req, res) => {
+  const movieId = req.params.id;
+  const movie = movies.find((m) => m.id === movieId);
+
+  if (movie) {
+    res.json(movie);
+  } else {
+    res.status(404).json({ error: 'Movie not found' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

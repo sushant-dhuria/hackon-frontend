@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar">
       <ul>
         <li><Link to="/">Prime Video</Link></li>
-
+        <li><Link to="/movie">Watch Movie</Link></li>
       </ul>
     </nav>
   );

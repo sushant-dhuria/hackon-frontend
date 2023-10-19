@@ -30,6 +30,7 @@ const Chat = ({ onChatSubmit }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("data",data);
         const aiReply = `AI: ${data.answer}`;
   
         // Update the chat with both the AI reply and user message

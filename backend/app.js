@@ -7,11 +7,12 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/check-product', (req, res) => {
-  const userMessage = req.body.userMessage; // Assuming the message is sent in the request body
+  const chatHistory = req.body.chatHistory; // Assuming the message is sent in the request body
 
-  // Generate some random results data
-  const results = generateRandomResults(10);
-
+  // Generate some random resulcts data
+  const results = generateRandomResults();
+  console.log(chatHistory.length);
+    const userMessage=chatHistory[chatHistory.length-1].text;
   // Respond with the same user message and the random results
   const response = {
     answer: `You said, "${userMessage}"`,
@@ -21,7 +22,7 @@ app.post('/check-product', (req, res) => {
   res.json(response);
 });
 
-function generateRandomResults(count) {
+function generateRandomResults() {
   const results = [
     {
         title: 'Thor',

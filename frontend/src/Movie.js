@@ -33,7 +33,7 @@ const MovieInfo = ({ name, value }) => (
 )
 
 const Movie = ({ infos }) => {
-  const cast = infos.cast.map(actor => (
+  const cast = infos.actors.map(actor => (
     <p key={actor}>{actor}</p>
   ));
 
@@ -41,7 +41,7 @@ const Movie = ({ infos }) => {
     <div className='movie-container'>
       <div className='movie-card'>
         <div className='movie-card-front'>
-          <img src={infos.poster} alt={infos.title} />
+          <img src={infos.poster_link} alt={infos.title} />
         </div>
         <div className='movie-card-back'>
           <h2 className='movie__title'>{infos.title}</h2>
@@ -49,7 +49,7 @@ const Movie = ({ infos }) => {
           <div className='movie__infos'>
             <MovieInfo name='duration' value={infos.duration} />
             <MovieInfo name='director' value={infos.director} />
-            <MovieInfo name='year' value={infos.year} />
+            <MovieInfo name='year' value={infos.date_published} />
             <MovieInfo name='cast' value={cast} />
           </div>
           <div className='movie__imdb'>

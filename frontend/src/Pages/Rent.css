@@ -1,0 +1,48 @@
+/* MovieCard.css */
+.rent-movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.movie-rent-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .movie-image img {
+    max-width: 100px;
+    max-height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .movie-details {
+    flex: 1;
+  }
+  
+  .movie-title {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .movie-rating {
+    color: #ff9900; /* Rating star color */
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+  
+  .movie-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007aff; /* Price color */
+    margin-top: 10px;
+  }
+  

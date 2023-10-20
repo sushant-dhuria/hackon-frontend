@@ -1,10 +1,21 @@
 /* Navbar.css */
+body{
+  background: linear-gradient(90deg, rgba(138,125,124,1) 0%, rgba(53,50,49,1) 13%, rgba(149,83,48,1) 100%);
+}
 .navbar {
     background-color: #333;
     color: #fff;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
   }
   
+  .left{
+width: 30%;
+  }
+  .right{
+width: 50%;
+  }
   .navbar ul {
     list-style: none;
     display: flex;

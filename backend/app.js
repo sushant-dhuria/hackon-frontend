@@ -83,12 +83,77 @@ const movies=[
   }
 ]
 
+const rentmovies=[
+  {
+    "title": "Movie 1",
+    "price": "9.99",
+    "rating": 4.5,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 2",
+    "price": "12.99",
+    "rating": 4.2,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 3",
+    "price": "10.99",
+    "rating": 3.8,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 4",
+    "price": "8.99",
+    "rating": 4.7,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 5",
+    "price": "11.99",
+    "rating": 4.0,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 6",
+    "price": "14.99",
+    "rating": 4.3,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 7",
+    "price": "9.49",
+    "rating": 4.8,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 8",
+    "price": "13.99",
+    "rating": 3.9,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 9",
+    "price": "12.49",
+    "rating": 4.4,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  },
+  {
+    "title": "Movie 10",
+    "price": "15.99",
+    "rating": 4.1,
+    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+  }
+]
+
 
 // Create a route to retrieve playlists and their movies
 app.get('/playlists', (req, res) => {
   return res.json(playlist);
 });
-
+app.get('/rent-movies', (req, res) => {
+  return res.json(rentmovies);
+});
 app.post('/check-product', (req, res) => {
   const chatHistory = req.body.chatHistory; // Assuming the message is sent in the request body
 

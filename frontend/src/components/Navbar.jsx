@@ -5,10 +5,17 @@ import './Navbar.css'
 const Navbar = () => {
   return (
     <nav className="navbar">
+      <div className='left'>
       <ul>
         <li><Link to="/">Prime Video</Link></li>
+        </ul>
+        </div>
+        <div className='right'>
+          <ul>
         <li><Link to="/movie">Watch Movie</Link></li>
+        <li><Link to="/rent">Rent Movie</Link></li>
       </ul>
+      </div>
     </nav>
   );
 };

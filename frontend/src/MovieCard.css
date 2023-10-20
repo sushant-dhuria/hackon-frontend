@@ -9,6 +9,8 @@
     background-color: #fff;
     transition: transform 0.2s;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
     width: 300px;
   }
   

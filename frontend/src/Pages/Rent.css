@@ -2,23 +2,23 @@
 .rent-movies{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .movie-rent-card {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    background-color:  #fff;
     border-radius: 5px;
+    width: 15vw;
+    height: 280px;
+    margin: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
-  .movie-image img {
-    max-width: 100px;
+   .movie-image img {
+    width: 100%;
     max-height: 150px;
     object-fit: cover;
     margin-right: 10px;
@@ -26,6 +26,8 @@
   
   .movie-details {
     flex: 1;
+    padding: 10px;
+    margin: 0;
   }
   
   .movie-title {
@@ -39,10 +41,23 @@
     margin-top: 5px;
   }
   
-  .movie-price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #007aff; /* Price color */
+  .movie-price{
     margin-top: 10px;
+  }
+  
+  .rental-button{
+    background-color: #0074D9; /* Blue shade for the button */
+    color: #FFFFFF; /* Text color for the button */
+    padding: 10px 15px; /* Adjust the padding to your preference */
+    border: none; /* Remove button border */
+    border-radius: 10px; /* Rounded borders */
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    font-weight: bold;
+    padding: 8px 12px;
+  }
+
+  .rental-button:hover {
+    background-color: #0056A4; /* New background color on hover */
   }
   

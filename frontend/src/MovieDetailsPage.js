@@ -60,6 +60,7 @@ const MovieDetailsPage = () => {
           <div className='movie-details__desc'>
             <h1 className='movie-details__title'>{movieDetails.title}</h1>
             <p className='movie-details__description'>{movieDetails.description}</p>
+            <p></p>
           </div>
           <div className='poster-image'>
             <img src={movieDetails.image} ></img>

@@ -37,7 +37,7 @@ const RentCard = (props) => {
           <div className="rating-stars">{renderStars(rating)}</div>
         </div>
         <div className="movie-price">
-          ${price}
+          <span>Rent for </span><button className="rental-button">${price}</button> / 30days
         </div>
       </div>
     </div>

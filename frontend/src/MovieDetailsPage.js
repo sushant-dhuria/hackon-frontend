@@ -56,14 +56,15 @@ const MovieDetailsPage = () => {
   return (
     <div className="movie-details-page">
       {movieDetails && (
-        <>
-    <div className='poster-image'>
-        <img src={movieDetails.image} ></img>
+        <div className='movie-details__info'>
+          <div className='movie-details__desc'>
+            <h1 className='movie-details__title'>{movieDetails.title}</h1>
+            <p className='movie-details__description'>{movieDetails.description}</p>
+          </div>
+          <div className='poster-image'>
+            <img src={movieDetails.image} ></img>
+          </div>
         </div>
-          <h2>{movieDetails.title}</h2>
-          <p>{movieDetails.description}</p>
-     
-        </>
       )}
 
       <h3>Recommended Movies:</h3>

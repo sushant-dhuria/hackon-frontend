@@ -58,7 +58,7 @@ const MoviePage = () => {
               >
                 <MovieCard
                   title={movie.title}
-                             image={movie.image}
+                  image={movie.image}
                 />
               </Link>
             ))}

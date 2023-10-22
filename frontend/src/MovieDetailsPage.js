@@ -100,9 +100,7 @@ const MovieDetailsPage = () => {
               }}
             >
               <MovieCard
-                title={movie.title}
-                description={movie.description}
-                image={movie.image}
+                infos={movie}
               />
             </Link>
             </div>

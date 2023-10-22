@@ -44,7 +44,7 @@ const MoviePage = () => {
     <div className="movie-page">
     
       {playlistData.map((playlist) => (
-        <div key={playlist.id}>
+        <div key={playlist.id} className='playlist'>
           <h2>{playlist.name}</h2>
           <div className="movie-card-container">
             {playlist.movies.map((movie) => (
@@ -57,8 +57,7 @@ const MoviePage = () => {
                 }}
               >
                 <MovieCard
-                  title={movie.title}
-                  image={movie.image}
+                  infos={movie}
                 />
               </Link>
             ))}

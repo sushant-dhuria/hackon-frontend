@@ -6,7 +6,7 @@ import './App.css';
 import ParentComponent from './ParentComponent';
 import MoviePage from './MoviePage'; // Import the Movie component
 import MovieDetailsPage from './MovieDetailsPage';
-import Rent from './Pages/Rent';
+import Rent from './Rent';
 function App() {
   return (
     <Router>

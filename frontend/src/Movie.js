@@ -25,9 +25,9 @@ const MovieInfo = ({ name , icon, value }) => (
 )
 
 const Movie = ({ infos }) => {
-  const cast = infos.cast.map(actor => (
-    <p key={actor}>{actor}</p>
-  ));
+  // const cast = infos.cast.map(actor => (
+  //   <p key={actor}>{actor}</p>
+  // ));
 
   return (
     <div className='movie-container'>

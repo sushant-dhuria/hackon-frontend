@@ -85,6 +85,8 @@ def fetch_results(resp):
         })
     if resp["Genres"]!=[]:
         where_operands.append(generate_or_text('genres',resp['Genres']))
+    if resp["actors"]!=[]:
+        where_operands.append(generate_or_text('actors',resp['actors']))
     if resp["Director"]!=[]:
         where_operands.append(generate_or_string('director',resp['Director']))
     if resp["keywords"]!=[]:
@@ -101,7 +103,7 @@ def fetch_results(resp):
     print(where_filter)
     response = (
         client.query
-        .get("Movies", ["title","description","poster_link","actors","duration","date_published","director"])
+        .get("Movies", ["title","description","poster_link","actors","duration","date_published","director","rating_value"])
         .with_near_text({
             "concepts": resp["chat_summary"]
         })

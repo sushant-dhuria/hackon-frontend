@@ -63,7 +63,7 @@ const MovieDetailsPage = () => {
             <p></p>
           </div>
           <div className='poster-image'>
-            <img src={movieDetails.image} ></img>
+            <img src={movieDetails.poster_link} ></img>
           </div>
         </div>
       )}
@@ -79,7 +79,7 @@ const MovieDetailsPage = () => {
           {recommendedMovies.slice(0, 4).map((movie) => (
             <img
               key={movie.id}
-              src={movie.image}
+              src={movie.poster_link}
               alt={movie.title}
               className="recommended-movie-image"
             />

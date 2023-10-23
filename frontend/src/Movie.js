@@ -33,14 +33,14 @@ const Movie = ({ infos }) => {
     <div className='movie-container'>
       <div className='movie-card'>
         <div className='movie-card-front'>
-          <img src={infos.image} alt={infos.title} />
+          <img src={infos.poster_link} alt={infos.title} />
         </div>
         <div className='movie-card-back'>
           <h2 className='movie__title'>{infos.title}</h2>
           <div className='movie__infos'>
             <MovieInfo  name='duration' icon={<TimelapseIcon/>} value={infos.duration} />
             <MovieInfo name='director' icon={<NestCamWiredStandIcon/>} value={infos.director} />
-            <Rating icon={<StarRateIcon/>} rating={infos.rating} />
+            <Rating icon={<StarRateIcon/>} rating={infos.rating_value} />
           </div>
         </div>
       </div>

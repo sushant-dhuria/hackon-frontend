@@ -30,7 +30,7 @@ const MovieCard = ({ infos }) => {
     <div className='movie-container'>
       <div className='movie-card'>
         <div className='movie-card-front'>
-          <img src={infos.image} alt={infos.title} />
+          <img src={infos.poster_link} alt={infos.title} />
         </div>
         <div className='movie-card-back'>
           <h2 className='movie__title'>{infos.title}</h2>

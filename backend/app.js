@@ -182,7 +182,7 @@ app.post('/check-product', (req, res) => {
   const chatHistory = req.body.chatHistory; // Assuming the message is sent in the request body
 
   // Generate some random resulcts data
-  const results = generateRandomResults();
+  const results = movies;
   console.log(chatHistory.length);
     const userMessage=chatHistory[chatHistory.length-1].text;
   // Respond with the same user message and the random results

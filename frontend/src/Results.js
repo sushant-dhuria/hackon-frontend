@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Results.css';
 import Movie from './Movie';
 
@@ -21,8 +22,18 @@ const Results = ({ results }) => {
     <div className='main-container'>
     <div className="results-container">
       {moviesToDisplay.map((movie, index) => (
+   
         <div key={index} className="movie-container">
+            <Link
+                key={movie.id}
+                to={`/movie/${movie.id}`}
+                state={{
+                  movieId: movie.id,
+                  recommendedListIds: movie.recommendations
+                }}
+              >
           <Movie infos={movie} />
+          </Link>
         </div>
       ))}
       

@@ -29,7 +29,7 @@ const movies=[
     "id": "1",
     "title": "The Matrix",
     "description": "A computer hacker learns the truth about reality when he joins a group of rebels fighting against machines that have enslaved humanity.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
 
     duration: '124',
     director: 'Kenneth Branagh',
@@ -39,7 +39,7 @@ const movies=[
     "id": "2",
     "title": "Inception",
     "description": "A thief enters the subconscious of his targets to steal their secrets in this mind-bending heist movie.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -48,7 +48,7 @@ const movies=[
     "id": "3",
     "title": "The Shawshank Redemption",
     "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
   
     duration: '124',
     director: 'Kenneth Branagh',
@@ -58,7 +58,7 @@ const movies=[
     "id": "4",
     "title": "Pulp Fiction",
     "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
   
     duration: '124',
     director: 'Kenneth Branagh',
@@ -68,7 +68,7 @@ const movies=[
     "id": "5",
     "title": "Interstellar",
     "description": "A group of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -77,7 +77,7 @@ const movies=[
     "id": "6",
     "title": "Forrest Gump",
     "description": "The life story of a man with a low IQ who accomplished great things in his lifetime.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -86,7 +86,7 @@ const movies=[
     "id": "7",
     "title": "Gladiator",
     "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -95,7 +95,7 @@ const movies=[
     "id": "8",
     "title": "The Dark Knight",
     "description": "When the menace known as The Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
-    "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -107,61 +107,61 @@ const rentmovies=[
     "title": "Movie 1",
     "price": "9.99",
     "rating": 4.5,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 2",
     "price": "12.99",
     "rating": 4.2,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 3",
     "price": "10.99",
     "rating": 3.8,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 4",
     "price": "8.99",
     "rating": 4.7,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 5",
     "price": "11.99",
     "rating": 4.0,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 6",
     "price": "14.99",
     "rating": 4.3,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 7",
     "price": "9.49",
     "rating": 4.8,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 8",
     "price": "13.99",
     "rating": 3.9,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 9",
     "price": "12.49",
     "rating": 4.4,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   },
   {
     "title": "Movie 10",
     "price": "15.99",
     "rating": 4.1,
-    "imageUrl": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
+    "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg"
   }
 ]
 
@@ -174,7 +174,7 @@ const rentmovies=[
 //           "id": "2",
 //           "title": "Inception",
 //           "description": "A thief enters the subconscious of his targets to steal their secrets in this mind-bending heist movie.",
-//           "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+//           "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
 //           duration: '124',
 //           director: 'Kenneth Branagh',
 //           rating: 8.7
@@ -183,7 +183,7 @@ const rentmovies=[
 //           "id": "7",
 //           "title": "Gladiator",
 //           "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
-//           "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+//           "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
 //           duration: '124',
 //           director: 'Kenneth Branagh',
 //           rating: 8.7
@@ -192,7 +192,7 @@ const rentmovies=[
 //           "id": "8",
 //           "title": "The Dark Knight",
 //           "description": "When the menace known as The Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
-//           "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+//           "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
 //           duration: '124',
 //           director: 'Kenneth Branagh',
 //           rating: 8.7
@@ -316,7 +316,7 @@ function generateRandomResults() {
         cast: ['Jodie Foster', 'Anthony Hopkins', 'Lawrence A. Bonney'],
         rating: 8.6,
         imdbLink: 'https://www.imdb.com/title/tt0102926/',
-        poster: "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,677,1000_AL_.jpg"
+        poster: "https://m.media-amazon.com/poster_links/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,677,1000_AL_.jpg"
       },
       {
         title: 'Spirited Away',
@@ -338,7 +338,7 @@ function generateRandomResults() {
         cast: ['Casper Van Dien', 'Denise Richards', 'Dina Meyer'],
         rating: 7.2,
         imdbLink: 'https://www.imdb.com/title/tttt0120201/',
-        poster: "https://m.media-amazon.com/images/M/MV5BNThlOTFhOGEtZjE2NC00MzMzLThkYWItZjlkNWNlMDAzMGZkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,732,1000_AL_.jpg"
+        poster: "https://m.media-amazon.com/poster_links/M/MV5BNThlOTFhOGEtZjE2NC00MzMzLThkYWItZjlkNWNlMDAzMGZkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,732,1000_AL_.jpg"
       },
   ]
   return results;

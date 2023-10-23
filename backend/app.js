@@ -30,7 +30,7 @@ const movies=[
     "title": "The Matrix",
     "description": "A computer hacker learns the truth about reality when he joins a group of rebels fighting against machines that have enslaved humanity.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [2, 3, 5,6],
+
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7,
@@ -40,7 +40,6 @@ const movies=[
     "title": "Inception",
     "description": "A thief enters the subconscious of his targets to steal their secrets in this mind-bending heist movie.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [1, 3, 4,5],
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -50,7 +49,7 @@ const movies=[
     "title": "The Shawshank Redemption",
     "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [2, 5, 6,9],
+  
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -60,7 +59,7 @@ const movies=[
     "title": "Pulp Fiction",
     "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [1, 2, 5,8],
+  
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -70,7 +69,6 @@ const movies=[
     "title": "Interstellar",
     "description": "A group of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [3, 4, 7,8],
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -80,7 +78,6 @@ const movies=[
     "title": "Forrest Gump",
     "description": "The life story of a man with a low IQ who accomplished great things in his lifetime.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [3, 5, 8,1],
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -90,7 +87,6 @@ const movies=[
     "title": "Gladiator",
     "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [4, 5, 6,2],
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -100,7 +96,6 @@ const movies=[
     "title": "The Dark Knight",
     "description": "When the menace known as The Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
     "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
-    "recommendations": [6, 7, 4,3],
     duration: '124',
     director: 'Kenneth Branagh',
     rating: 8.7
@@ -171,10 +166,104 @@ const rentmovies=[
 ]
 
 
+// const recommendations=[
+//   {
+//     "id":1,
+//     movies:[
+//         {
+//           "id": "2",
+//           "title": "Inception",
+//           "description": "A thief enters the subconscious of his targets to steal their secrets in this mind-bending heist movie.",
+//           "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+//           duration: '124',
+//           director: 'Kenneth Branagh',
+//           rating: 8.7
+//         },
+//         {
+//           "id": "7",
+//           "title": "Gladiator",
+//           "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+//           "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+//           duration: '124',
+//           director: 'Kenneth Branagh',
+//           rating: 8.7
+//         },
+//         {
+//           "id": "8",
+//           "title": "The Dark Knight",
+//           "description": "When the menace known as The Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
+//           "image": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+//           duration: '124',
+//           director: 'Kenneth Branagh',
+//           rating: 8.7
+//         }
+      
+//     ]
+//   },
+//   {
+
+//   }
+// ]
+
+
+// ... (previous code)
+
+// Create a new array for movie recommendations
+const recommendations = movies.map((movie) => {
+  // Generate 3 random recommended movies (excluding the current movie)
+  const recommendedMovieIds = getRandomMovieIds(3, movie.id, movies);
+  const recommendedMovies = recommendedMovieIds.map((id) => movies.find((m) => m.id === id));
+
+  return {
+    id: movie.id,
+    movies: recommendedMovies,
+  };
+});
+
+function getRandomMovieIds(count, excludedId, movies) {
+  const randomMovieIds = [];
+  while (randomMovieIds.length < count) {
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    const randomMovieId = movies[randomIndex].id;
+    if (randomMovieId !== excludedId && !randomMovieIds.includes(randomMovieId)) {
+      randomMovieIds.push(randomMovieId);
+    }
+  }
+  return randomMovieIds;
+}
+
+app.get('/recommendations', (req, res) => {
+  res.json(recommendations);
+});
+
+app.get('/recommendations/:id', (req, res) => {
+  const movieId = req.params.id;
+  const movie = movies.find((m) => m.id === movieId);
+
+  if (!movie) {
+    return res.status(404).json({ error: 'Movie not found' });
+  }
+
+  // Generate 3 random recommended movies (excluding the current movie)
+  const recommendedMovieIds = getRandomMovieIds(3, movieId, movies);
+  const recommendedMovies = recommendedMovieIds.map((id) => movies.find((m) => m.id === id));
+
+  const recommendation = {
+    id: movie.id,
+    movies: recommendedMovies,
+  };
+
+  res.json(recommendation);
+});
+
+
+// ... (remaining code)
+
 // Create a route to retrieve playlists and their movies
 app.get('/playlists', (req, res) => {
   return res.json(playlist);
 });
+
 app.get('/rent-movies', (req, res) => {
   return res.json(rentmovies);
 });
@@ -264,6 +353,10 @@ app.get('/movies/:id', (req, res) => {
   } else {
     res.status(404).json({ error: 'Movie not found' });
   }
+});
+
+app.get('/recommend/:id', (req, res) => {
+ 
 });
 
 app.listen(port, () => {

@@ -29,7 +29,7 @@ const Results = ({ results }) => {
                 to={`/movie/${movie.id}`}
                 state={{
                   movieId: movie.id,
-                  recommendedListIds: movie.recommendations
+          
                 }}
               >
           <Movie infos={movie} />

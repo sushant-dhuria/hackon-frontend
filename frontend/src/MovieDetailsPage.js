@@ -8,7 +8,7 @@ import './MovieDetailspage.css';
 const MovieDetailsPage = () => {
   let { state } = useLocation();
   const movieId = state?.movieId;
-  const recommendedListIds = state?.recommendedListIds || [];
+
 
   const [movieDetails, setMovieDetails] = useState(null);
   const [recommendedMovies, setRecommendedMovies] = useState([]);
@@ -24,18 +24,17 @@ const MovieDetailsPage = () => {
       .then((response) => setMovieDetails(response.data))
       .catch((error) => console.error('Error fetching movie details:', error));
 
-    // Fetch recommended movie details based on recommendedListIds
-    const recommendedMoviesPromises = recommendedListIds.map((id) =>
-      axios.get(`http://localhost:5000/movies/${id}`)
-    );
 
-    axios
-      .all(recommendedMoviesPromises)
-      .then((responses) => {
-        const recommendedMoviesData = responses.map((response) => response.data);
-        setRecommendedMovies(recommendedMoviesData);
-      })
-      .catch((error) => console.error('Error fetching recommended movies:', error));
+  // Assuming you have the movie's recommended list ID
+const recommendedMoviesEndpoint = `http://localhost:5000/recommendations/${movieId}`;
+
+axios
+  .get(recommendedMoviesEndpoint)
+  .then((response) => {
+    const recommendedMoviesData = response.data.movies;
+    setRecommendedMovies(recommendedMoviesData);
+  })
+  .catch((error) => console.error('Error fetching recommended movies:', error));
 
     // Add click event listener to the window to handle clicks outside of the container
     window.addEventListener('click', handleWindowClick);
@@ -44,7 +43,7 @@ const MovieDetailsPage = () => {
       // Remove the event listener when the component unmounts
       window.removeEventListener('click', handleWindowClick);
     };
-  }, [movieId, recommendedListIds]);
+  }, movieId);
 
   // Handle clicks outside of the container
   const handleWindowClick = (e) => {
@@ -96,7 +95,7 @@ const MovieDetailsPage = () => {
               to={`/movie/${movie.id}`}
               state={{
                 movieId: movie.id,
-                recommendedListIds: movie.recommendations
+         
               }}
             >
               <MovieCard

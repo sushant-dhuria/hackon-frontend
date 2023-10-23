@@ -53,7 +53,7 @@ const MoviePage = () => {
                 to={`/movie/${movie.id}`}
                 state={{
                   movieId: movie.id,
-                  recommendedListIds: movie.recommendations
+              
                 }}
               >
                 <MovieCard

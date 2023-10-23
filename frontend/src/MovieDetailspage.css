@@ -31,7 +31,7 @@
   cursor: pointer;
     /* Styles for the overlay */
     &::before {
-      content: 'Playlist';
+      content: 'click me';
       position: absolute;
       top: 50%;
       left: 50%;

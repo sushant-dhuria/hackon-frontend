@@ -24,6 +24,7 @@ const playlist=[
   }
 ]
 
+
 const movies=[
   {
     "id": "1",
@@ -166,6 +167,64 @@ const rentmovies=[
 ]
 
 
+
+const playlists = movies.map((movie) => {
+  const numPlaylists = Math.floor(Math.random() * 4) + 1; // Generate 1 to 4 playlists per movie
+
+  const moviePlaylists = [];
+  for (let i = 1; i <= numPlaylists; i++) {
+    const recommendedMovieIds = getRandomMovieIds(3, movie.id, movies);
+    const recommendedMovies = recommendedMovieIds.map((id) => {
+      const recommendedMovie = movies.find((m) => m.id === id);
+      return {
+        id: recommendedMovie.id,
+        title: recommendedMovie.title,
+        description: recommendedMovie.description,
+        poster_link: recommendedMovie.poster_link, // Assuming the image property is the poster link
+        duration: recommendedMovie.duration,
+        director: recommendedMovie.director,
+        rating: recommendedMovie.rating,
+      };
+    });
+
+    moviePlaylists.push({
+      id: i,
+      name: `Playlist ${i}`,
+      movies: recommendedMovies,
+    });
+  }
+
+  return {
+    id: movie.id,
+    name: movie.title,
+    playlists: moviePlaylists,
+  };
+});
+
+function getRandomMovieIds(count, currentMovieId, allMovies) {
+  const randomMovieIds = [];
+  while (randomMovieIds.length < count) {
+    const randomIndex = Math.floor(Math.random() * allMovies.length);
+    const randomMovieId = allMovies[randomIndex].id;
+    if (randomMovieId !== currentMovieId && !randomMovieIds.includes(randomMovieId)) {
+      randomMovieIds.push(randomMovieId);
+    }
+  }
+  return randomMovieIds;
+}
+
+
+function getRandomMovieIds(count, excludedId, movies) {
+  const randomMovieIds = [];
+  while (randomMovieIds.length < count) {
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    const randomMovieId = movies[randomIndex].id;
+    if (randomMovieId !== excludedId && !randomMovieIds.includes(randomMovieId)) {
+      randomMovieIds.push(randomMovieId);
+    }
+  }
+  return randomMovieIds;
+}
 // const recommendations=[
 //   {
 //     "id":1,
@@ -236,6 +295,9 @@ app.get('/recommendations', (req, res) => {
   res.json(recommendations);
 });
 
+app.get('/playlists',(req,res)=>{
+  res.json(playlists);
+})
 app.get('/recommendations/:id', (req, res) => {
   const movieId = req.params.id;
   const movie = movies.find((m) => m.id === movieId);
@@ -281,6 +343,20 @@ app.post('/check-product', (req, res) => {
   };
 
   res.json(response);
+});
+
+// Add this route to retrieve playlists by their id
+app.get('/playlist/:id', (req, res) => {
+  const playlistId = req.params.id;
+
+  // Find the playlist with the given id
+  const playlist = playlists.find((p) => p.id === playlistId);
+
+  if (playlist) {
+    res.json(playlist);
+  } else {
+    res.status(404).json({ error: 'Playlist not found' });
+  }
 });
 
 function generateRandomResults() {

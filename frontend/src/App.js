@@ -9,6 +9,7 @@ import MovieDetailsPage from './MovieDetailsPage';
 import Rent from './Rent';
 import Timestamp2 from './Timestamp2';
 import Timestamp from './Timestamp';
+import PLotSearch from './PLotSearch';
 function App() {
   return (
     <Router>
@@ -22,7 +23,7 @@ function App() {
             <Route path="/rent" element={<Rent/>}/>
 <Route path='/searchTimeStamp' element={<Timestamp/>}/>
 <Route path='/searchTimeStamp/:videoid' element={<Timestamp2 />} />
-
+<Route path='/plotsearch' element={<PLotSearch/>}/>
           </Routes>
         </div>
       </div>

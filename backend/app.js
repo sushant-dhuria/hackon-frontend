@@ -421,6 +421,18 @@ app.post('/check-product', (req, res) => {
   res.json(response);
 });
 
+app.post('/check-plot', (req, res) => {
+
+  // Generate some random resulcts data
+  const results = movies;
+
+  const response = {
+    results: results,
+  };
+
+  res.json(response);
+});
+
 app.post('/search', (req, res) => {
   const search = req.body.query; // Assuming the message is sent in the request body
 const videoid = req.body.videolink;

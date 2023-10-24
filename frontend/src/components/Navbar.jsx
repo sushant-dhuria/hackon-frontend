@@ -14,6 +14,7 @@ const Navbar = () => {
           <ul>
         <li><Link to="/movie">Watch Movie</Link></li>
         <li><Link to="/rent">Rent Movie</Link></li>
+        <li><Link to="/searchTimeStamp">Search TimeStamp</Link></li>
       </ul>
       </div>
     </nav>

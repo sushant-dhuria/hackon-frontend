@@ -49,7 +49,7 @@ const MovieDetailsPage = () => {
       // Remove the event listener when the component unmounts
       window.removeEventListener('click', handleWindowClick);
     };
-  }, [movieId]);
+  }, movieId);
 
   const handleWindowClick = (e) => {
     if (recommendedContainerRef.current && !recommendedContainerRef.current.contains(e.target)) {

@@ -10,28 +10,12 @@ const MoviePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/playlists'); // Use the correct API URL
+        const response = await axios.get('http://localhost:5000/playlists');
         const playlists = response.data;
+        console.log(response.data);
 
-        const playlistWithMovieDetails = await Promise.all(
-          playlists.map(async (playlist) => {
-            const movieDetails = await Promise.all(
-              playlist.movies.map(async (movieId) => {
-                try {
-                  const movieResponse = await axios.get(`http://localhost:5000/movies/${movieId}`);
-                  return movieResponse.data;
-                } catch (error) {
-                  console.error('Error fetching movie details:', error);
-                  return { id: movieId, title: 'Movie Not Found' };
-                }
-              })
-            );
 
-            return { ...playlist, movies: movieDetails };
-          })
-        );
-
-        setPlaylistData(playlistWithMovieDetails);
+        setPlaylistData(playlists);
       } catch (error) {
         console.error('Error fetching playlist data:', error);
       }

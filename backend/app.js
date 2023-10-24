@@ -6,21 +6,97 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-const playlist=[
+const predefinedplaylist=[
   {
     "id":"1",
     "name":"comedy",
-    "movies":[1,2,3,5,6]
+    "movies":[
+      {
+        "id": "1",
+        "title": "The Matrix",
+        "description": "A computer hacker learns the truth about reality when he joins a group of rebels fighting against machines that have enslaved humanity.",
+        "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+    
+        duration: '124',
+        director: 'Kenneth Branagh',
+        rating: 8.7,
+      },
+      {
+        "id": "2",
+        "title": "Inception",
+        "description": "A thief enters the subconscious of his targets to steal their secrets in this mind-bending heist movie.",
+        "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+        duration: '124',
+        director: 'Kenneth Branagh',
+        rating: 8.7
+      },
+      {
+        "id": "3",
+        "title": "The Shawshank Redemption",
+        "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+      
+        duration: '124',
+        director: 'Kenneth Branagh',
+        rating: 8.7
+      } 
+    ]
   },
   {
     "id":"2",
     "name":"action",
-    "movies":[4,5,6,1,2]
+    "movies":[
+      {
+        "id": "4",
+        "title": "Pulp Fiction",
+        "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+        "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+      
+        duration: '124',
+        director: 'Kenneth Branagh',
+        rating: 8.7
+      },
+      {
+        "id": "5",
+        "title": "Interstellar",
+        "description": "A group of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+        duration: '124',
+        director: 'Kenneth Branagh',
+        rating: 8.7
+      },
+      {
+        "id": "6",
+        "title": "Forrest Gump",
+        "description": "The life story of a man with a low IQ who accomplished great things in his lifetime.",
+        "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+        duration: '124',
+        director: 'Kenneth Branagh',
+        rating: 8.7
+      }
+    ]
   },
   {
     "id":"3",
     "name":"horror",
-    "movies":[7,8]
+    "movies":[  {
+      "id": "7",
+      "title": "Gladiator",
+      "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+      "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+      duration: '124',
+      director: 'Kenneth Branagh',
+      rating: 8.7
+    },
+    {
+      "id": "8",
+      "title": "The Dark Knight",
+      "description": "When the menace known as The Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "poster_link": "http://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+      duration: '124',
+      director: 'Kenneth Branagh',
+      rating: 8.7
+    }]
   }
 ]
 
@@ -296,7 +372,7 @@ app.get('/recommendations', (req, res) => {
 });
 
 app.get('/playlists',(req,res)=>{
-  res.json(playlists);
+  res.json(predefinedplaylist);
 })
 app.get('/recommendations/:id', (req, res) => {
   const movieId = req.params.id;
@@ -343,6 +419,18 @@ app.post('/check-product', (req, res) => {
   };
 
   res.json(response);
+});
+
+app.post('/search', (req, res) => {
+  const search = req.body.query; // Assuming the message is sent in the request body
+const videoid = req.body.videolink;
+const timestamp = Math.floor(Math.random() * 500) + 1;
+console.log(search,videoid)
+const response = {
+timestamp:timestamp
+};
+
+res.json(response);
 });
 
 // Add this route to retrieve playlists by their id

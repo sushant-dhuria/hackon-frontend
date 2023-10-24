@@ -21,7 +21,7 @@ const Rent = () => {
           title={movie.title}
           price={movie.price}
           rating={movie.rating}
-          imageUrl={movie.imageUrl}
+          imageUrl={movie.poster_link}
         />
       ))}
     </div>

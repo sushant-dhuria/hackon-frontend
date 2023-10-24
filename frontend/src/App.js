@@ -7,6 +7,8 @@ import ParentComponent from './ParentComponent';
 import MoviePage from './MoviePage'; // Import the Movie component
 import MovieDetailsPage from './MovieDetailsPage';
 import Rent from './Rent';
+import Timestamp2 from './Timestamp2';
+import Timestamp from './Timestamp';
 function App() {
   return (
     <Router>
@@ -18,6 +20,8 @@ function App() {
             <Route path="/movie" element={<MoviePage />} /> {/* Add the new Movie route */}
             <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
             <Route path="/rent" element={<Rent/>}/>
+<Route path='/searchTimeStamp' element={<Timestamp/>}/>
+<Route path='/searchTimeStamp/:videoid' element={<Timestamp2 />} />
 
           </Routes>
         </div>

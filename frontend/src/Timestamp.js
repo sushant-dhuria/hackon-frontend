@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
-import Projector from './Projector';
 const Timestamp = () => {
   const [link, setLink] = useState('');
   const history = useNavigate();
@@ -20,9 +19,6 @@ const Timestamp = () => {
   }
 
   return (
-    <div>
-      
-  <Projector/>
     <div className='searchbar'>
       <input
         type="text"
@@ -31,7 +27,6 @@ const Timestamp = () => {
         onChange={(e) => setLink(e.target.value)}
       />
       <button onClick={handleSearch}><SearchIcon/></button>
-    </div>
     </div>
   );
 }

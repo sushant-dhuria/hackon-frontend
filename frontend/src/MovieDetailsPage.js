@@ -65,6 +65,11 @@ const MovieDetailsPage = () => {
             <h1 className="movie-details__title">{movieDetails.title}</h1>
             <p className="movie-details__description">{movieDetails.description}</p>
             <p></p>
+            {movieDetails.rentPrice && (
+              <button className="rent-button">
+                Rent for ${movieDetails.rentPrice}
+              </button>
+            )}
           </div>
           <div className="poster-image">
             <img src={movieDetails.poster_link} alt={movieDetails.title} />

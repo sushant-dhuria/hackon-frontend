@@ -1,6 +1,8 @@
 import weaviate
 import pandas as pd
-import json
+from llm.get_movies import get_playlist_name
+from renting.rent_model import predict_rent
+import datetime
 #setting up client
 client = weaviate.Client("http://localhost:8080")
 
@@ -101,15 +103,99 @@ def fetch_results(resp):
         "operands":where_operands
         }
     print(where_filter)
+    if where_filter:
+        response = (
+            client.query
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value"])
+            .with_near_text({
+                "concepts": resp["chat_summary"]
+            })
+            .with_where(where_filter)
+            .with_additional(["distance"])
+            .with_limit(200)
+            .do()
+        )
+    else:
+                response = (
+            client.query
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value"])
+            .with_near_text({
+                "concepts": resp["chat_summary"]
+            })
+            .with_additional(["distance"])
+            .with_limit(200)
+            .do()
+        )
+    results = [{"id": d.pop("movie_id"), **d} for d in response['data']['Get']['Movies']]
+    return results
+
+def get_movie_by_id(id):
     response = (
+            client.query
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value","rating_count"])
+            .with_where({"path":"movie_id","operator":"Equal","valueNumber":int(id)})
+            .with_additional(["distance"])
+            .do()
+        )
+    date_obj = datetime.datetime.strptime(response['data']['Get']['Movies'][0]['date_published'], "%Y-%m-%dT%H:%M:%SZ")
+    year = date_obj.year
+    rent_price = predict_rent([[year,response['data']['Get']['Movies'][0]['rating_count'],response['data']['Get']['Movies'][0]['rating_value']]])
+    response['data']['Get']['Movies'][0]['rentPrice'] = round(rent_price,2)
+    return response['data']['Get']['Movies'][0]
+
+def recommend_movie_by_id(id):
+    response = (
+            client.query
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value"])
+            .with_where({"path":"movie_id","operator":"Equal","valueNumber":int(id)})
+            .with_additional(["distance","id"])
+            .do()
+        )
+    response2 = (
         client.query
-        .get("Movies", ["title","description","poster_link","actors","duration","date_published","director","rating_value"])
-        .with_near_text({
-            "concepts": resp["chat_summary"]
-        })
-        .with_where(where_filter)
-        .with_additional(["distance"])
-        .do()
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value"])
+            .with_near_object({"id":response["data"]["Get"]["Movies"][0]["_additional"]["id"]})
+            .with_additional(["distance"])
+            .with_limit(10)
+            .do()
     )
-    print(response)
-    return response['data']['Get']['Movies']
+    results = [{"id": d.pop("movie_id"), **d} for d in response2['data']['Get']['Movies']]
+    response ={"id":int(id),"movies":results[1:]}
+    return response
+
+def get_playlist_by_id(id):
+    response = (
+            client.query
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value"])
+            .with_where({"path":"movie_id","operator":"Equal","valueNumber":int(id)})
+            .with_additional(["distance","id"])
+            .do()
+        )
+    response2 = (
+        client.query
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value"])
+            .with_near_object({"id":response["data"]["Get"]["Movies"][0]["_additional"]["id"]})
+            .with_additional(["distance"])
+            .with_limit(17)
+            .do()
+    )
+    response = []
+    results = [{"id": d.pop("movie_id"), **d} for d in response2['data']['Get']['Movies']]
+    parent_mov = response2['data']['Get']['Movies'][0]
+    parent_title = response2['data']['Get']['Movies'][0]['title']
+    playlist_titles = [parent_title]
+    playlists = []
+    for i in range(1,len(results)):
+        playlist_titles.append(results[i]['title'])
+        if len(playlist_titles)>=5:
+            name = get_playlist_name(playlist_titles)['name']
+            parent_mov['name'] = name
+            playlists.append(
+                {
+                    'id':int(id),
+                    'name':name,
+                    'movies':[parent_mov,results[i-3],results[i-2],results[i-1],results[i]]
+                }
+            )
+            playlist_titles = [parent_title]
+    return {'id':int(id),'name':parent_title,'playlists':playlists}

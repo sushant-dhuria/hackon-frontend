@@ -13,7 +13,6 @@ const Navbar = () => {
         <div className='right'>
           <ul>
         <li><Link to="/">Watch Movie</Link></li>
-        <li><Link to="/searchTimeStamp">Search TimeStamp</Link></li>
         <li><Link to="/plotsearch">Plot Search</Link></li>
       </ul>
       </div>

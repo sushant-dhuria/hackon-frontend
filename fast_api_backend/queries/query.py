@@ -199,3 +199,16 @@ def get_playlist_by_id(id):
             )
             playlist_titles = [parent_title]
     return {'id':int(id),'name':parent_title,'playlists':playlists}
+
+def get_by_plot(query):
+    response = (
+            client.query
+            .get("Movies", ["movie_id","title","description","poster_link","actors","duration","date_published","director","rating_value"])
+            .with_near_text({
+                "concepts": query
+            })
+            .with_additional(["distance"])
+            .with_limit(20)
+            .do()
+        )
+    return response['data']['Get']['Movies']
